@@ -1,0 +1,35 @@
+# inherit by "/Library/Input Methods/Squirrel.app/Contents/SharedSupport/default.yaml"
+# Rime default settings
+# encoding: utf-8
+
+patch:
+  schema_list:
+    - schema: luna_pinyin_simp
+
+  menu:
+    page_size: 5
+
+  ascii_composer/good_old_caps_lock: true
+  ascii_composer/switch_key:
+    # 打字打到一半时按下了 Caps/Shift 后： commit_code 上屏拼音的英文字母 | commit_text 上屏拼音拼出的词语
+    Caps_Lock: commit_text # commit_code | commit_text
+    Shift_L: commit_code # noop | commit_code | commit_text
+    Shift_R: commit_code # macOS 不会单独响应这个，设定上面那个，左右 Shift 都管用
+
+  switcher:
+    caption: 「方案选择」
+    hotkeys:
+      # ~ # 把其他都注释掉，或只留一个波浪号，可以将快捷键置空。
+      - Control+Shift+grave
+    save_options:
+      - full_shape
+      - ascii_punct
+      - simplification
+      - extended_charset
+
+  translator/dictionary: luna_pinyin.extended
+
+  key_binder:
+    bindings:
+      - { when: composing, accept: Shift+Tab, send: Shift+Left }
+      - { when: composing, accept: Tab, send: Shift+Right }
